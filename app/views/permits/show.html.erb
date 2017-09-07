@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Permitid:</strong>
+  <%= @permit.permitid %>
+</p>
+
+<p>
+  <strong>Permit description:</strong>
+  <%= @permit.permit %>
+</p>
+
+<p>
+  <strong>Filename:</strong>
+  <%= @permit.filename %>
+</p>
+
+
+
+
+<%= link_to 'Edit', edit_permit_path(@permit) %> |
+<%= link_to 'Back', permits_path %>

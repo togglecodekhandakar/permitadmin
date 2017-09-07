@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Parttypes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parttype</th>
+      <th>Parttype name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @parttypes.each do |parttype| %>
+      <tr>
+        <td><%= parttype.parttype_id %></td>
+        <td><%= parttype.parttype_name %></td>
+        <td><%= link_to 'Show', parttype %></td>
+        <td><%= link_to 'Edit', edit_parttype_path(parttype) %></td>
+        <td><%= link_to 'Destroy', parttype, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Parttype', new_parttype_path %>

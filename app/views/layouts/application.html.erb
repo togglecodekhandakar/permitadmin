@@ -9,6 +9,125 @@
   </head>
 
   <body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+   
+    <div class="navbar-header">
+      
+      
+      <%= link_to "DSM Permit Admin", root_path, class: "navbar-brand" %>
+
+
+    </div>
+
+    
+    
+      <ul class="nav navbar-nav">
+        <!--li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li-->
+        <li>
+
+        <%= link_to "Sign up", new_user_registration_path %>
+
+        <% if user_signed_in? %>
+
+        <li> 
+
+			<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+
+		</li>
+
+		<% else %>
+
+		<li> 
+		<%= link_to "Log In", new_user_session_path %> 
+
+		</li>
+
+
+        <% end %>
+
+        </li>
+        
+      </ul>
+
+
+ <ul class="nav navbar-nav navbar-right">
+
+<% if user_signed_in? %> 
+
+
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Permits Category <span class="caret"> </span> </a>
+
+
+<ul class="dropdown-menu" role="menu">
+
+<% Category.all.each do |category| %>
+	
+	<li>
+		<%= link_to category.category_name, questions_path(category: category.id), class: "link" %>
+
+	</li>
+
+<% end %>
+</ul>
+
+</li>
+
+
+	<li class="dropdown"> 
+
+	 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+	 	Login Settings <span class="caret"> </span>
+	 </a>
+
+	 <ul class="dropdown-menu" role="menu">
+		<li> <%= link_to "Employee", employees_path, class: "link" %> </li>
+		<li> <%= link_to "Site", sites_path, class: "link" %> </li>
+	 </ul>
+
+	 </li>
+
+
+
+	 <li class="dropdown"> 
+
+	 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+	 	System Configuration <span class="caret"> </span>
+	 </a>
+
+	 <ul class="dropdown-menu" role="menu">
+
+	 	<li> <%= link_to "Questiontype", questiontypes_path, class: "link" %> </li>
+	 	<li> <%= link_to "Parttype", parttypes_path, class: "link" %> </li>
+	 	<li> <%= link_to "Category", categories_path, class: "link" %> </li>
+	 	<li> <%= link_to "Question", questions_path, class: "link" %> </li>
+	 	<li> <%= link_to "Common Question", commonquestions_path, class: "link" %> </li>
+	 	
+
+	 </ul>
+
+
+	 </li>
+
+<% end %>
+
+ </ul>
+
+
+    
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<% flash.each do |name, msg| %>
+
+<%= content_tag(:div, msg, class: "alert alert-info") %>
+
+<% end %>
+
+
     <%= yield %>
   </body>
 </html>

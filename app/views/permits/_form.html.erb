@@ -1,0 +1,13 @@
+<%= simple_form_for(@permit) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :permitid %>
+    <%= f.input :permit %>
+    <%= f.input :filename %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
