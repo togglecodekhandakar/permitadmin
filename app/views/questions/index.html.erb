@@ -1,19 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Questions</h1>
+<h1>Basic Questions</h1>
 
-<table>
+<div class="row">
+  <div class="col-md-2">
+<%= link_to 'New Question', new_question_path %>
+  </div>
+
+  <div class="col-md-10">
+
+    <table class="table table-bordered">
   <thead>
     <tr>
       <th>Question</th>
       <th>Question text</th>
       <th>Options</th>
-      <th colspan="3"></th>
+      <th colspan="3">Action</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @questions.each do |question| %>
+     <% @questions.each do |question| %>
       <tr>
         <td><%= question.question_id %></td>
         <td><%= question.question_text %></td>
@@ -26,6 +33,11 @@
   </tbody>
 </table>
 
-<br>
+  </div>
+</div>
 
-<%= link_to 'New Question', new_question_path %>
+
+
+
+
+

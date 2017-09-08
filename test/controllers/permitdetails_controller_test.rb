@@ -17,7 +17,7 @@ class PermitdetailsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create permitdetail" do
     assert_difference('Permitdetail.count') do
-      post permitdetails_url, params: { permitdetail: { permitdetail_id: @permitdetail.permitdetail_id, strreply: @permitdetail.strreply } }
+      post permitdetails_url, params: { permitdetail: { commonquestion_text: @permitdetail.commonquestion_text, permitdetail_id: @permitdetail.permitdetail_id, question_text: @permitdetail.question_text, strreply: @permitdetail.strreply } }
     end
 
     assert_redirected_to permitdetail_url(Permitdetail.last)
@@ -34,7 +34,7 @@ class PermitdetailsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update permitdetail" do
-    patch permitdetail_url(@permitdetail), params: { permitdetail: { permitdetail_id: @permitdetail.permitdetail_id, strreply: @permitdetail.strreply } }
+    patch permitdetail_url(@permitdetail), params: { permitdetail: { commonquestion_text: @permitdetail.commonquestion_text, permitdetail_id: @permitdetail.permitdetail_id, question_text: @permitdetail.question_text, strreply: @permitdetail.strreply } }
     assert_redirected_to permitdetail_url(@permitdetail)
   end
 

@@ -37,7 +37,24 @@ class PermitdetailsController < ApplicationController
 
     @permitdetail.permit_id = params[:permit_id]
     @permitdetail.question_id = params[:question_id]
-    @permitdetail.commonquestion_id = params[:commonquestion_d]
+    @permitdetail.commonquestion_id = params[:commonquestion_id]
+
+   
+
+
+    if params[:question_id].blank?
+      @pemitdetail.question_text = "n/a"
+    else 
+      @questions = Question.find(params[:question_id])
+      @permitdetail[:question_text] = @questions.question_text
+
+    end
+
+    if params[:commonquestion_id].blank?
+      @pemitdetail.commonquestion_text = "n/a"
+    else 
+     @permitdetail[:commonquestion_text] = Commonquestion.find(params[:commonquestion_id]).question_text
+    end
 
 
     
@@ -58,7 +75,9 @@ class PermitdetailsController < ApplicationController
   def update
     @permitdetail.permit_id = params[:permit_id]
     @permitdetail.question_id = params[:question_id]
-    @permitdetail.commonquestion_id = params[:commonquestion_d]
+    @permitdetail.commonquestion_id = params[:commonquestion_id]
+
+
     respond_to do |format|
       if @permitdetail.update(permitdetail_params)
         format.html { redirect_to @permitdetail, notice: 'Permitdetail was successfully updated.' }
@@ -92,9 +111,10 @@ class PermitdetailsController < ApplicationController
     end
 
     
+      
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def permitdetail_params
-      params.require(:permitdetail).permit(:permitdetail_id, :permit_id)
+      params.require(:permitdetail).permit(:permitdetail_id, :permit_id, :question_id, :commonquestion_id, :strreply, :question_text, :commonquestion_text)
     end
 end

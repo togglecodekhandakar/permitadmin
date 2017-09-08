@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   
   
   
-  resources :permits 
   resources :permitdetails
+  resources :permits 
   
 
 

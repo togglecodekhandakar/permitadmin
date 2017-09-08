@@ -65,8 +65,8 @@
 
 <% Category.all.each do |category| %>
 	
-	<li>
-		<%= link_to category.category_name, questions_path(category: category.id), class: "link" %>
+	<li class="<%= 'active' if params[:category] == category.category_name %>"> 
+		<%= link_to category.category_name, permits_path(category: category.category_name), class: "link" %>
 
 	</li>
 
@@ -127,7 +127,8 @@
 
 <% end %>
 
-
-    <%= yield %>
+<div class="container">
+	<%= yield %>
+</div>
   </body>
 </html>
