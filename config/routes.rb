@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   
   
-  
+
+ 
+  get 'greetings/hello'
+
+  resources :employees
   resources :permitdetails
   resources :permits 
   
@@ -15,7 +19,18 @@ Rails.application.routes.draw do
   resources :categories
   resources :sites
   devise_for :users
-  resources :employees
+
 
   root 'permits#index'
+
+
+
+
+
+  #namespace :api do
+  #  namespace :v1 do
+      resources :emplogins
+  #  end
+ # end
+
 end
